@@ -662,17 +662,21 @@ export default {
 	data() {
 		return {
 			health: "healthy",
-			info: {
-				upload: "11.65 Mbit/s",
-				download: "29.42 Mbit/s",
-				ping: "103.044 ms"
-			}
+			info: null
 		};
 	},
-	computed: {
-		// health() {
-		// 	return "healthy";
-		// }
+	computed: {},
+	methods: {
+		loadStatus() {
+			fetch("/status.json")
+				.then(json => json.json())
+				.then(response => {
+					this.info = response[0];
+				});
+		}
+	},
+	mounted() {
+		this.loadStatus();
 	}
 };
 </script>
