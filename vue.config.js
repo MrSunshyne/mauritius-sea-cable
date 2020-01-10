@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/mauritius-sea-cable/"
+  publicPath: process.env.NODE_ENV === "production" ? "/mauritius-sea-cable/" : "/"
 };
