@@ -620,21 +620,22 @@
 			>Health Status of submarine cables connected to Mauritius</p>
 			<br />
 			<p class="tracking-wider relative px-3 bg-black inline-block">
-				All data are unofficial. Inspired by
-				<a
-					href="https://baliseacable.com"
-					target="_blank"
-					class="underline"
-				>baliseacable</a>
+				Data source is currently dummy data from :
+				<input
+					type="text"
+					v-model="source"
+					size="10"
+					class="bg-black"
+				/>
 			</p>
 			<br />
 			<p class="tracking-wider relative px-3 bg-black inline-block">
-				Project is open source and under construction
+				This project is open source and under construction on
 				<a
 					href="https://github.com/MrSunshyne/mauritius-sea-cable"
 					target="_blank"
 					class="underline"
-				>on GitHub</a>
+				>GitHub</a>
 			</p>
 		</div>
 		<div class="relative real-time p-8">
@@ -647,12 +648,14 @@
 					<option value="outage">Outage</option>
 				</select>
 			</div>
-			<div class="label">Upload</div>
-			<div class="value upload">{{ info.upload }}</div>
-			<div class="label">Download</div>
-			<div class="value download">{{ info.download}}</div>
-			<div class="label">Ping ~</div>
-			<div class="value ping">{{ info.ping }}</div>
+			<div v-if="info">
+				<div class="label">Upload</div>
+				<div class="value upload">{{ info.upload }}</div>
+				<div class="label">Download</div>
+				<div class="value download">{{ info.download}}</div>
+				<div class="label">Ping ~</div>
+				<div class="value ping">{{ info.ping }}</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -662,13 +665,16 @@ export default {
 	data() {
 		return {
 			health: "healthy",
-			info: null
+			info: null,
+			source: "status.json",
+			publicPath:
+				process.env.NODE_ENV === "production" ? "/mauritius-sea-cable/" : "/"
 		};
 	},
 	computed: {},
 	methods: {
 		loadStatus() {
-			fetch("/status.json")
+			fetch(`${this.publicPath}${this.source}`)
 				.then(json => json.json())
 				.then(response => {
 					this.info = response[0];
@@ -677,6 +683,11 @@ export default {
 	},
 	mounted() {
 		this.loadStatus();
+	},
+	watch: {
+		source() {
+			this.loadStatus();
+		}
 	}
 };
 </script>
