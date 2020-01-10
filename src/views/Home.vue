@@ -639,8 +639,8 @@
 			</p>
 		</div>
 		<div class="relative real-time p-8">
-			<div class="label">
-				//showing sample dat
+			<div class="label pb-2">
+				//showing sample data
 				<select name="health" class="health text-black p-2" v-model="health">
 					<option value="healthy">Healthy</option>
 					<option value="degraded">Degraded</option>
