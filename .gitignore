@@ -19,3 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# JSON Responses from speedtest
+response/*
+__pycache__/*
