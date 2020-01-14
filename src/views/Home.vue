@@ -650,11 +650,11 @@
 			</div>
 			<div v-if="info">
 				<div class="label">Upload</div>
-				<div class="value upload">{{ info.upload }}</div>
+				<div class="value upload">{{ upload }}</div>
 				<div class="label">Download</div>
-				<div class="value download">{{ info.download}}</div>
+				<div class="value download">{{ download }}</div>
 				<div class="label">Ping ~</div>
-				<div class="value ping">{{ info.ping }}</div>
+				<div class="value ping">{{ ping }}</div>
 			</div>
 		</div>
 	</div>
@@ -665,20 +665,63 @@ export default {
 	data() {
 		return {
 			health: "healthy",
-			info: null,
+			info: {
+				type: "result",
+				timestamp: new Date(),
+				ping: {
+					jitter: 0,
+					latency: 0
+				},
+				download: {
+					bandwidth: 0,
+					bytes: 0,
+					elapsed: 0
+				},
+				upload: {
+					bandwidth: 0,
+					bytes: 0,
+					elapsed: 0
+				}
+			},
 			source: "status.json",
 			publicPath:
 				process.env.NODE_ENV === "production" ? "/mauritius-sea-cable/" : "/"
 		};
 	},
-	computed: {},
+	computed: {
+		upload() {
+			return this.round(this.toBits(this.info.upload.bandwidth), 2) + " Mb/s";
+		},
+		download() {
+			return this.round(this.toBits(this.info.download.bandwidth), 2) + " Mb/s";
+		},
+		ping() {
+			return this.round(this.info.ping.latency, 1) + "ms";
+		}
+	},
 	methods: {
+		toBits(value) {
+			return (value / (1024 * 1024)) * 8;
+		},
+		round(value, places) {
+			return parseFloat(value).toFixed(places);
+		},
 		loadStatus() {
-			fetch(`${this.publicPath}${this.source}`)
-				.then(json => json.json())
-				.then(response => {
-					this.info = response[0];
-				});
+			if (this.source.includes("https://")) {
+				// PUBLIC
+				fetch(`${this.source}`)
+					.then(json => json.json())
+					.then(response => {
+						this.info = response;
+					});
+			} else {
+				// SAME DOMAIN
+				fetch(`${this.publicPath}${this.source}`)
+					.then(json => json.json())
+					.then(response => {
+						this.info = response;
+					});
+			}
 		}
 	},
 	mounted() {
