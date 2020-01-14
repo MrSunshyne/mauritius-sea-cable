@@ -1,8 +1,20 @@
-[
-  {
-    "timestamp": "",
-    "upload": "11.65 Mbit/s",
-    "download": "29.42 Mbit/s",
-    "ping": "103.044 ms"
-  }
-]
+{
+  "type": "result",
+  "timestamp": "2020-01-13T12:33:35Z",
+  "ping": {
+    "jitter": 0.30299999999999999,
+    "latency": 444.71300000000002
+  },
+  "download": {
+    "bandwidth": 887469,
+    "bytes": 11204640,
+    "elapsed": 15016
+  },
+  "upload": {
+    "bandwidth": 3575901,
+    "bytes": 47445120,
+    "elapsed": 15012
+  },
+  "packetLoss": 0.66889632107023411,
+  "isp": "Mauritius Telecom"
+}
