@@ -16,20 +16,6 @@
 	--accent: #d71b1b;
 }
 
-.image-container {
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
-	svg {
-		object-fit: cover;
-		object-position: center;
-		width: 100%;
-		height: 100%;
-	}
-}
-
 #Mauritius,
 #Rodrigues {
 	fill: #fff; //var(--accent);
@@ -66,40 +52,94 @@
 	}
 }
 
+.image-container {
+	svg {
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@screen md {
+	.image-container {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		@apply w-full h-full;
+
+		svg {
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
 .real-time {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
 	display: flex;
-	justify-content: flex-end;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.cable-name {
+	@apply font-black  text-gray-500;
+}
+
+.label {
+	@apply text-xs tracking-widest uppercase text-gray-500;
+}
+
+.value {
+	@apply mb-2;
+	color: var(--accent);
+	line-height: 1;
 }
 
 .cable-wrapper {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	background: rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(10px);
-	padding: 10px 25px;
-	// flex-basis: 30%;
+	padding: 5px 10px;
 }
 
-.cable-name {
-	@apply font-black text-3xl text-gray-500;
-}
+@screen lg {
+	.real-time {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
 
-.label {
-	@apply font-bold tracking-widest uppercase text-gray-500;
-}
+	.cable-name {
+		@apply text-3xl;
+	}
 
-.value {
-	@apply text-3xl mb-5;
-	color: var(--accent);
-	line-height: 1;
+	.label {
+		@apply;
+	}
+
+	.value {
+		@apply text-3xl mb-5;
+	}
+
+	.cable-wrapper {
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		padding: 10px 25px;
+		// flex-basis: 30%;
+	}
 }
 </style>
 <template>
-	<div class="page-home h-screen text-white relative healthy">
-		<div class="image-container absolute w-full h-full">
+	<div class="page-home h-full text-white relative healthy">
+		<div class="image-container">
 			<!-- v-if="info" -->
 			<!-- :class="'MARS-'+calculateHealth(info.MARS.download.bandwidth)+ ' LION-'+calculateHealth(info.LION.download.bandwidth)+ ' SAFE1-'+calculateHealth(info.SAFE1.download.bandwidth)+ ' SAFE2-'+calculateHealth(info.SAFE2.download.bandwidth)+ ' SAFE3-'+calculateHealth(info.SAFE3.download.bandwidth)" -->
 			<svg
@@ -659,18 +699,18 @@
 				</defs>
 			</svg>
 		</div>
-		<div class="relative">
+		<div class="relative text-sm text-center md:text-md md:text-left">
 			<p v-if="error" class="px-3 bg-red-600">
 				An error occured
 				<br />
 				{{error}}
 			</p>
 			<h1 class="md:text-4xl px-3 my-3 bg-black inline-block font-bold relative">Mauritius Sea Cables</h1>
-			<br />
+			<br class="hidden md:block" />
 			<p
 				class="tracking-wider relative px-3 bg-black inline-block"
 			>Health Status of submarine cables connected to Mauritius</p>
-			<br />
+			<br class="hidden md:block" />
 			<p class="tracking-wider relative px-3 bg-black inline-block">
 				Data source is currently dummy data from :
 				<input
@@ -680,7 +720,7 @@
 					class="bg-gray-500 px-2 text-black"
 				/>
 			</p>
-			<br />
+			<br class="hidden md:block" />
 			<p class="tracking-wider relative px-3 bg-black inline-block">
 				This project is open source and under construction on
 				<a
@@ -690,7 +730,7 @@
 				>GitHub</a>
 			</p>
 		</div>
-		<div class="real-time p-8">
+		<div class="real-time p-2 md:p-8">
 			<!-- <div class="label pb-2">
 				//showing sample data
 				<select name="health" class="health text-black p-2" v-model="health">
