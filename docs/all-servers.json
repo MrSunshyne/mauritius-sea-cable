@@ -1,0 +1,202 @@
+{
+  "LION": {
+    "type": "result",
+    "timestamp": "2020-01-19T13:52:35Z",
+    "ping": {
+      "jitter": 11.304,
+      "latency": 357.76600000000002
+    },
+    "download": {
+      "bandwidth": 2695320,
+      "bytes": 34221232,
+      "elapsed": 15001
+    },
+    "upload": {
+      "bandwidth": 667013,
+      "bytes": 5419256,
+      "elapsed": 13003
+    },
+    "packetLoss": 0.66445182724252494,
+    "isp": "Mauritius Telecom",
+    "interface": {
+      "internalIp": "192.168.1.28",
+      "name": "enp0s31f6",
+      "macAddr": "E8:6A:64:DA:D9:1D",
+      "isVpn": false,
+      "externalIp": "102.114.122.91"
+    },
+    "server": {
+      "id": 24492,
+      "name": "ORANGE FRANCE",
+      "location": "Saint-Denis La Réunion",
+      "country": "France",
+      "host": "reunion3.speedtest.orange.fr",
+      "port": 8080,
+      "ip": "80.12.65.60"
+    },
+    "result": {
+      "id": "508a9495-feea-40e6-9823-b49dd3b2e400",
+      "url": "https://www.speedtest.net/result/c/508a9495-feea-40e6-9823-b49dd3b2e400"
+    }
+  },
+  "MARS": {
+    "type": "result",
+    "timestamp": "2020-01-19T13:52:35Z",
+    "ping": {
+      "jitter": 11.304,
+      "latency": 357.76600000000002
+    },
+    "download": {
+      "bandwidth": 2695,
+      "bytes": 34221232,
+      "elapsed": 15001
+    },
+    "upload": {
+      "bandwidth": 457013,
+      "bytes": 5419256,
+      "elapsed": 13003
+    },
+    "packetLoss": 0.66445182724252494,
+    "isp": "Mauritius Telecom",
+    "interface": {
+      "internalIp": "192.168.1.28",
+      "name": "enp0s31f6",
+      "macAddr": "E8:6A:64:DA:D9:1D",
+      "isVpn": false,
+      "externalIp": "102.114.122.91"
+    },
+    "server": {
+      "id": 24492,
+      "name": "ORANGE FRANCE",
+      "location": "Saint-Denis La Réunion",
+      "country": "France",
+      "host": "reunion3.speedtest.orange.fr",
+      "port": 8080,
+      "ip": "80.12.65.60"
+    },
+    "result": {
+      "id": "508a9495-feea-40e6-9823-b49dd3b2e400",
+      "url": "https://www.speedtest.net/result/c/508a9495-feea-40e6-9823-b49dd3b2e400"
+    }
+  },
+  "SAFE1": {
+    "type": "result",
+    "timestamp": "2020-01-19T13:52:35Z",
+    "ping": {
+      "jitter": 11.304,
+      "latency": 2.76600000000002
+    },
+    "download": {
+      "bandwidth": 6695320,
+      "bytes": 34221232,
+      "elapsed": 15001
+    },
+    "upload": {
+      "bandwidth": 457013,
+      "bytes": 5419256,
+      "elapsed": 13003
+    },
+    "packetLoss": 0.66445182724252494,
+    "isp": "Mauritius Telecom",
+    "interface": {
+      "internalIp": "192.168.1.28",
+      "name": "enp0s31f6",
+      "macAddr": "E8:6A:64:DA:D9:1D",
+      "isVpn": false,
+      "externalIp": "102.114.122.91"
+    },
+    "server": {
+      "id": 24492,
+      "name": "ORANGE FRANCE",
+      "location": "Saint-Denis La Réunion",
+      "country": "France",
+      "host": "reunion3.speedtest.orange.fr",
+      "port": 8080,
+      "ip": "80.12.65.60"
+    },
+    "result": {
+      "id": "508a9495-feea-40e6-9823-b49dd3b2e400",
+      "url": "https://www.speedtest.net/result/c/508a9495-feea-40e6-9823-b49dd3b2e400"
+    }
+  },
+  "SAFE2": {
+    "type": "result",
+    "timestamp": "2020-01-19T13:52:35Z",
+    "ping": {
+      "jitter": 11.304,
+      "latency": 357.76600000000002
+    },
+    "download": {
+      "bandwidth": 2695320,
+      "bytes": 34221232,
+      "elapsed": 15001
+    },
+    "upload": {
+      "bandwidth": 457013,
+      "bytes": 5419256,
+      "elapsed": 13003
+    },
+    "packetLoss": 0.66445182724252494,
+    "isp": "Mauritius Telecom",
+    "interface": {
+      "internalIp": "192.168.1.28",
+      "name": "enp0s31f6",
+      "macAddr": "E8:6A:64:DA:D9:1D",
+      "isVpn": false,
+      "externalIp": "102.114.122.91"
+    },
+    "server": {
+      "id": 24492,
+      "name": "ORANGE FRANCE",
+      "location": "Saint-Denis La Réunion",
+      "country": "France",
+      "host": "reunion3.speedtest.orange.fr",
+      "port": 8080,
+      "ip": "80.12.65.60"
+    },
+    "result": {
+      "id": "508a9495-feea-40e6-9823-b49dd3b2e400",
+      "url": "https://www.speedtest.net/result/c/508a9495-feea-40e6-9823-b49dd3b2e400"
+    }
+  },
+  "SAFE3": {
+    "type": "result",
+    "timestamp": "2020-01-19T13:52:35Z",
+    "ping": {
+      "jitter": 11.304,
+      "latency": 357.76600000000002
+    },
+    "download": {
+      "bandwidth": 444444,
+      "bytes": 34221232,
+      "elapsed": 15001
+    },
+    "upload": {
+      "bandwidth": 457013,
+      "bytes": 5419256,
+      "elapsed": 13003
+    },
+    "packetLoss": 0.66445182724252494,
+    "isp": "Mauritius Telecom",
+    "interface": {
+      "internalIp": "192.168.1.28",
+      "name": "enp0s31f6",
+      "macAddr": "E8:6A:64:DA:D9:1D",
+      "isVpn": false,
+      "externalIp": "102.114.122.91"
+    },
+    "server": {
+      "id": 24492,
+      "name": "ORANGE FRANCE",
+      "location": "Saint-Denis La Réunion",
+      "country": "France",
+      "host": "reunion3.speedtest.orange.fr",
+      "port": 8080,
+      "ip": "80.12.65.60"
+    },
+    "result": {
+      "id": "508a9495-feea-40e6-9823-b49dd3b2e400",
+      "url": "https://www.speedtest.net/result/c/508a9495-feea-40e6-9823-b49dd3b2e400"
+    }
+  }
+}
