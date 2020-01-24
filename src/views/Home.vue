@@ -71,6 +71,22 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.cable-wrapper {
+	margin-right: 100px;
+	// flex-basis: 30%;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.cable-name {
+	@apply font-black text-3xl text-gray-500;
 }
 
 .label {
@@ -78,13 +94,13 @@
 }
 
 .value {
-	@apply text-5xl mb-5;
+	@apply text-3xl mb-5;
 	color: var(--accent);
 	line-height: 1;
 }
 </style>
 <template>
-	<div class="page-home h-screen text-white relative" :class="health">
+	<div class="page-home h-screen text-white relative" :class="calculateHealth">
 		<div class="image-container absolute w-full h-full">
 			<svg viewBox="0 0 1300 768" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g id="world">
@@ -613,7 +629,9 @@
 			</svg>
 		</div>
 		<div class="relative">
-			<h1 class="md:text-4xl px-3 my-3 bg-black inline-block font-bold relative">Mauritius Sea Cables</h1>
+			<h1
+				class="md:text-4xl px-3 my-3 bg-black inline-block font-bold relative"
+			>Mauritius Sea Cables {{ calculateHealth }}</h1>
 			<br />
 			<p
 				class="tracking-wider relative px-3 bg-black inline-block"
@@ -625,7 +643,7 @@
 					type="text"
 					v-model="source"
 					size="10"
-					class="bg-black"
+					class="bg-gray-500 px-2 text-black"
 				/>
 			</p>
 			<br />
@@ -639,7 +657,7 @@
 			</p>
 		</div>
 		<div class="relative real-time p-8">
-			<div class="label pb-2">
+			<!-- <div class="label pb-2">
 				//showing sample data
 				<select name="health" class="health text-black p-2" v-model="health">
 					<option value="healthy">Healthy</option>
@@ -647,8 +665,27 @@
 					<option value="offline">Offline</option>
 					<option value="outage">Outage</option>
 				</select>
+			</div>-->
+			<div class="cable-wrapper" v-if="info">
+				<div class="cable-name">SAFE</div>
+				<div class="label">Upload</div>
+				<div class="value upload">{{ upload }}</div>
+				<div class="label">Download</div>
+				<div class="value download">{{ download }}</div>
+				<div class="label">Ping ~</div>
+				<div class="value ping">{{ ping }}</div>
 			</div>
-			<div v-if="info">
+			<div class="cable-wrapper" v-if="info">
+				<div class="cable-name">LION</div>
+				<div class="label">Upload</div>
+				<div class="value upload">{{ upload }}</div>
+				<div class="label">Download</div>
+				<div class="value download">{{ download }}</div>
+				<div class="label">Ping ~</div>
+				<div class="value ping">{{ ping }}</div>
+			</div>
+			<div class="cable-wrapper" v-if="info">
+				<div class="cable-name">MARS</div>
 				<div class="label">Upload</div>
 				<div class="value upload">{{ upload }}</div>
 				<div class="label">Download</div>
@@ -697,11 +734,36 @@ export default {
 		},
 		ping() {
 			return this.round(this.info.ping.latency, 1) + "ms";
+		},
+		calculateHealth() {
+			const lowerLimit = 0;
+			const upperLimit = 20;
+
+			let valuePercentage = (
+				((this.toBits(this.info.download.bandwidth, 2) - lowerLimit) /
+					upperLimit) *
+				100
+			).toFixed(1);
+			let health;
+			if (valuePercentage > 80) {
+				health = "healthy";
+			} else if (valuePercentage > 30) {
+				health = "degraded";
+			} else if (valuePercentage > 10) {
+				health = "offline";
+			} else {
+				health = "outage";
+			}
+
+			return health;
 		}
 	},
 	methods: {
 		toBits(value) {
 			return (value / (1024 * 1024)) * 8;
+		},
+		toMBytes(value) {
+			return this.toBits(value) / (1024 * 1024);
 		},
 		round(value, places) {
 			return parseFloat(value).toFixed(places);
