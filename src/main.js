@@ -3,7 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./assets/tailwind.css";
+import visibility from "vue-visibility-change";
 
+// registry directive
+Vue.use(visibility);
 Vue.config.productionTip = false;
 
 new Vue({

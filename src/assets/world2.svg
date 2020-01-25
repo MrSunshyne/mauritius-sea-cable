@@ -1,7 +1,6 @@
 <svg width="1300" height="768" viewBox="0 0 1300 768" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="world">
 <g clip-path="url(#clip0)">
-<rect width="1300" height="768" fill="white"/>
 <rect id="Rectangle 1" width="1300" height="768" fill="#282828"/>
 <g id="cable-SAFE1">
 <path id="Vector 1" d="M266.5 626C291.5 643.667 370.2 657.1 483 561.5C510.728 538 545 522 577 531" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

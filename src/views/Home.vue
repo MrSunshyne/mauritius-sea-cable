@@ -1,144 +1,6 @@
-<style lang="scss" >
-.page-home {
-	background: #282828;
-}
 
-.healthy {
-	--accent: #2bde73;
-}
-.degraded {
-	--accent: #ba8200;
-}
-.offline {
-	--accent: #8f8f8f;
-}
-.outage {
-	--accent: #d71b1b;
-}
-
-#Mauritius,
-#Rodrigues {
-	fill: #fff; //var(--accent);
-}
-
-@keyframes dash {
-	to {
-		stroke-dashoffset: 1000;
-	}
-}
-
-[id^="cable"] path {
-	stroke-dasharray: 50;
-	animation: dash 2s linear reverse infinite;
-	stroke: var(--accent);
-}
-
-[id^="cable"].degraded path {
-	stroke-dasharray: 30;
-	animation-duration: 30s;
-}
-[id^="cable"].outage path {
-	stroke-dasharray: 30;
-	animation-duration: 60s;
-}
-[id^="cable"].offline path {
-	animation-duration: 500s;
-}
-
-[id^="cable"]:hover {
-	path {
-		stroke: black;
-		cursor: pointer;
-	}
-}
-
-.image-container {
-	svg {
-		object-fit: cover;
-		object-position: center;
-		width: 100%;
-		height: 100%;
-	}
-}
-
-@screen md {
-	.image-container {
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		position: absolute;
-		@apply w-full h-full;
-
-		svg {
-			object-fit: cover;
-			object-position: center;
-			width: 100%;
-			height: 100%;
-		}
-	}
-}
-
-.real-time {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.cable-name {
-	@apply font-black  text-gray-500;
-}
-
-.label {
-	@apply text-xs tracking-widest uppercase text-gray-500;
-}
-
-.value {
-	@apply mb-2;
-	color: var(--accent);
-	line-height: 1;
-}
-
-.cable-wrapper {
-	border: 1px solid rgba(0, 0, 0, 0.3);
-	background: rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(10px);
-	padding: 5px 10px;
-}
-
-@screen lg {
-	.real-time {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	.cable-name {
-		@apply text-3xl;
-	}
-
-	.label {
-		@apply;
-	}
-
-	.value {
-		@apply text-3xl mb-5;
-	}
-
-	.cable-wrapper {
-		border: 1px solid rgba(0, 0, 0, 0.3);
-		background: rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(10px);
-		padding: 10px 25px;
-		// flex-basis: 30%;
-	}
-}
-</style>
 <template>
-	<div class="page-home h-full text-white relative healthy">
+	<div class="page-home h-full text-white relative healthy" v-visibility-change="visibilityChange">
 		<div class="image-container">
 			<!-- v-if="info" -->
 			<!-- :class="'MARS-'+calculateHealth(info.MARS.download.bandwidth)+ ' LION-'+calculateHealth(info.LION.download.bandwidth)+ ' SAFE1-'+calculateHealth(info.SAFE1.download.bandwidth)+ ' SAFE2-'+calculateHealth(info.SAFE2.download.bandwidth)+ ' SAFE3-'+calculateHealth(info.SAFE3.download.bandwidth)" -->
@@ -151,7 +13,6 @@
 			>
 				<g id="world">
 					<g clip-path="url(#clip0)">
-						<rect width="1300" height="768" fill="white" />
 						<rect id="Rectangle 1" width="1300" height="768" fill="#282828" />
 						<g id="cable-SAFE1">
 							<path
@@ -699,38 +560,38 @@
 				</defs>
 			</svg>
 		</div>
-		<div class="relative text-sm text-center md:text-md md:text-left">
+		<div class="relative text-sm text-center py-3 md:text-md md:text-left">
 			<p v-if="error" class="px-3 bg-red-600">
 				An error occured
 				<br />
 				{{error}}
 			</p>
-			<h1 class="md:text-4xl px-3 my-3 bg-black inline-block font-bold relative">Mauritius Sea Cables</h1>
+			<h1
+				class="text-2xl md:text-4xl px-3 md:my-3 md:bg-black inline-block font-bold relative"
+			>Mauritius Sea Cables</h1>
 			<br class="hidden md:block" />
-			<p
-				class="tracking-wider relative px-3 bg-black inline-block"
-			>Health Status of submarine cables connected to Mauritius</p>
-			<br class="hidden md:block" />
-			<p class="tracking-wider relative px-3 bg-black inline-block">
-				Data source is currently dummy data from :
-				<input
-					type="text"
-					v-model="source"
-					size="10"
-					class="bg-gray-500 px-2 text-black"
-				/>
-			</p>
-			<br class="hidden md:block" />
-			<p class="tracking-wider relative px-3 bg-black inline-block">
-				This project is open source and under construction on
-				<a
-					href="https://github.com/MrSunshyne/mauritius-sea-cable"
-					target="_blank"
-					class="underline"
-				>GitHub</a>
+			<p class="tracking-wider relative px-3 md:px-3 mb-4 md;mb-0 md:bg-black inline-block">
+				Health Status of submarine cables connected to Mauritius.
+				<br class="hidden md:block" />
+				<span class="hidden md:inline">
+					Data source is currently dummy data from :
+					<input
+						type="text"
+						v-model="source"
+						size="10"
+						class="bg-gray-500 px-2 text-black"
+					/>
+
+					<br class="hidden md:block" />This project is open source and under construction on
+					<a
+						href="https://github.com/MrSunshyne/mauritius-sea-cable"
+						target="_blank"
+						class="underline"
+					>GitHub</a>
+				</span>
 			</p>
 		</div>
-		<div class="real-time p-2 md:p-8">
+		<div class="real-time">
 			<!-- <div class="label pb-2">
 				//showing sample data
 				<select name="health" class="health text-black p-2" v-model="health">
@@ -794,6 +655,10 @@ export default {
 		// },
 	},
 	methods: {
+		visibilityChange(evt, hidden) {
+			// do something
+			console.log(hidden);
+		},
 		upload(value) {
 			return this.info ? this.round(this.toBits(value), 2) + " Mb/s" : "0 Mb/s";
 		},
@@ -901,3 +766,157 @@ export default {
 	}
 };
 </script>
+
+<style lang="scss" >
+html {
+	background: #282828;
+}
+
+.page-home {
+}
+.healthy {
+	--accent: #2bde73;
+}
+.degraded {
+	--accent: #ba8200;
+}
+.offline {
+	--accent: #8f8f8f;
+}
+.outage {
+	--accent: #d71b1b;
+}
+
+#Mauritius,
+#Rodrigues {
+	fill: #fff; //var(--accent);
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 1000;
+	}
+}
+
+[id^="cable"] path {
+	stroke-dasharray: 50;
+	animation: dash 2s linear reverse infinite;
+	// animation-play-state: paused;
+	stroke: var(--accent);
+}
+
+[id^="cable"].degraded path {
+	stroke-dasharray: 30;
+	animation-duration: 30s;
+}
+[id^="cable"].outage path {
+	stroke-dasharray: 30;
+	animation-duration: 60s;
+}
+[id^="cable"].offline path {
+	animation-duration: 500s;
+}
+
+[id^="cable"]:hover {
+	path {
+		stroke: black;
+		cursor: pointer;
+	}
+}
+
+.image-container {
+	width: 100%;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	svg {
+		object-fit: cover;
+		object-position: center top;
+		width: 140%;
+		height: 100%;
+	}
+}
+
+@screen md {
+	.image-container {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		@apply w-full h-full;
+
+		svg {
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.real-time {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	// flex-wrap: wrap;
+	// justify-content: stretch;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.cable-name {
+	@apply font-black  text-gray-500;
+}
+
+.label {
+	@apply text-xs tracking-widest uppercase text-gray-500;
+}
+
+.value {
+	@apply mb-2 text-sm;
+	color: var(--accent);
+	line-height: 1;
+}
+
+.cable-wrapper {
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	background: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	padding: 5px 10px;
+}
+
+@screen md {
+	.real-time {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.cable-name {
+		@apply text-3xl;
+	}
+
+	.label {
+		@apply;
+	}
+
+	.value {
+		@apply text-3xl mb-5;
+	}
+
+	.cable-wrapper {
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		padding: 10px 25px;
+		// flex-basis: 30%;
+	}
+}
+</style>
