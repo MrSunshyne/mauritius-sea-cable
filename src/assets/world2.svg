@@ -2,7 +2,7 @@
 <g id="world">
 <g clip-path="url(#clip0)">
 <rect id="Rectangle 1" width="1300" height="768" fill="#282828"/>
-<g id="cable-SAFE1">
+<g id="cable-SAFE2">
 <path id="Vector 1" d="M266.5 626C291.5 643.667 370.2 657.1 483 561.5C510.728 538 545 522 577 531" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <g id="cable-SAFE3">
@@ -14,7 +14,7 @@
 <g id="cable-MARS">
 <path id="Vector 5" d="M714 520.5C637 514.5 637 533.5 592.5 536.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g id="cable-SAFE2">
+<g id="cable-SAFE1">
 <path id="Vector 2" d="M596 525C673 421 705 345 712 240" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <g id="WorldMap">
