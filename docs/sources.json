@@ -1,5 +1,9 @@
 [
   {
+    "name": "MrSunshyne",
+    "url": "https://raw.githubusercontent.com/MrSunshyne/mauritius-speedtest/master/data/realtime.json"
+  },
+  {
     "name": "sample",
     "url": "all-servers.json"
   },
