@@ -141,7 +141,6 @@ export default {
 			fetch(`${this.publicPath}sources.json`)
 				.then(json => json.json())
 				.then(response => {
-					console.log(response);
 					this.sources = response;
 				})
 				.catch(error => {

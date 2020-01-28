@@ -495,6 +495,10 @@
 				<div class="value ping">{{ ping(value.ping.latency) }}</div>
 			</div>
 		</div>
+		<div class="last-updated">
+			<div class="update-label">Last Updated</div>
+			<div class="update-time">{{ lastUpdate }}</div>
+		</div>
 	</div>
 </template>
 
@@ -512,6 +516,7 @@ export default {
 			hideUpload: true,
 			source: null,
 			sources: null,
+			lastUpdate: null,
 			publicPath:
 				process.env.NODE_ENV === "production" ? "/mauritius-sea-cable/" : "/"
 		};
@@ -573,6 +578,9 @@ export default {
 								response.hasOwnProperty("SAFE")
 							) {
 								this.info = response;
+								this.lastUpdate = new Date(
+									response.LION.timestamp
+								).toLocaleString();
 								this.allCablesHealth();
 							} else {
 								this.error = "Missing key or something. check data source";
@@ -822,6 +830,22 @@ html {
 		backdrop-filter: blur(10px);
 		padding: 10px 25px;
 		// flex-basis: 30%;
+	}
+}
+
+@screen md {
+	.last-updated {
+		position: absolute;
+		right: 0;
+		top: 0;
+		@apply p-4 text-right text-gray-400;
+
+		.update-label {
+			@apply uppercase text-xs;
+		}
+		.update-time {
+			@apply text-xl font-bold;
+		}
 	}
 }
 
