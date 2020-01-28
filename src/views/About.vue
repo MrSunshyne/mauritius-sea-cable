@@ -8,13 +8,14 @@
 		<h2>Aim</h2>
 		<p>The aim of this project is to profile a simple interface to reflect the current status of internet connectitivity of Mauritius.</p>
 		<h2>How it works?</h2>
-		<p>The data comes from independently hosted tests that rely on the Speedtest-cli utility.</p>
+		<p>The data comes from independently hosted tests that rely on the speedtest-cli utility.</p>
 		<p>
 			There is a companion project which performs the tests and then pushes it to the gihtub repo of the tester.
 			<a
-				href="https://github.com/reallyaditya"
+				href="https://github.com/reallyaditya/mauritius-speedtest"
 			>View Companion Project</a>
 		</p>
+		<p>These respository are what we call `sources`.</p>
 
 		<p class="font-bold pt-3">Here is the list of sources currrently available:</p>
 		<ul v-if="sources">
@@ -63,7 +64,7 @@
 			<a
 				href="https://github.com/MrSunshyne/mauritius-sea-cable"
 			>front-end client</a> or the
-			<a href="https://github.com/reallyaditya">backend-end service</a>
+			<a href="https://github.com/reallyaditya/mauritius-speedtest">backend-end service</a>
 		</p>
 
 		<h2 id="contribute">Contribute</h2>
@@ -83,7 +84,7 @@
 			<a href="https://twitter.com/levelsio">@levelsio</a>
 		</p>
 		<p>
-			The companion side project which provides the data sources was written in python by
+			The companion project which provides the data sources was written in python by
 			<a
 				href="https://github.com/reallyaditya"
 			>Adiyta</a>
