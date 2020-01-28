@@ -35,6 +35,28 @@
 				>this file</a>
 			</li>
 		</ul>
+		<br />
+		<p>The file is expected to be in the following format</p>
+		<pre class="border border-black my-2 font-mono text-xs">			
+		// file: all-servers.json
+		{
+			LION : SpeedtestResult,
+			MARS:  SpeedtestResult,
+			SAFE1: SpeedtestResult,
+			SAFE2: SpeedtestResult,
+			SAFE3: SpeedtestResult
+		}
+		// Where Speedtest result has the following signature
+		Interface SpeedtestResult {
+			timestamp: '',
+			upload: '',
+			download: '',
+			ping: ''
+		}
+		</pre>
+		<a
+			href="https://mrsunshyne.github.io/mauritius-sea-cable/all-servers.json"
+		>View example source file</a>
 		<h2>Is this Official?</h2>
 		<p>
 			Absolutely not. This is a community effort. All the code are open source and available online should you wish to verify the
