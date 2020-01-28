@@ -8,7 +8,7 @@
 		<h2>Aim</h2>
 		<p>The aim of this project is to profile a simple interface to reflect the current status of internet connectitivity of Mauritius.</p>
 		<h2>How it works?</h2>
-		<p>The data comes from independantly hosted tests that rely on the Speedtest-cli utility.</p>
+		<p>The data comes from independently hosted tests that rely on the Speedtest-cli utility.</p>
 		<p>
 			There is a companion project which performs the tests and then pushes it to the gihtub repo of the tester.
 			<a
