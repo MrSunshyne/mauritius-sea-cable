@@ -578,9 +578,7 @@ export default {
 								response.hasOwnProperty("SAFE")
 							) {
 								this.info = response;
-								this.lastUpdate = new Date(
-									response.LION.timestamp
-								).toLocaleString();
+								this.processLastUpdated(response);
 								this.allCablesHealth();
 							} else {
 								this.error = "Missing key or something. check data source";
@@ -591,6 +589,16 @@ export default {
 						});
 				}
 			}
+		},
+		processLastUpdated(obj) {
+			let selectedTimestamp = obj.LION.timestamp;
+			let time = new Date(selectedTimestamp).toLocaleTimeString();
+			let day =
+				new Date().toLocaleDateString() ===
+				new Date(selectedTimestamp).toLocaleDateString()
+					? "Today, "
+					: new Date(selectedTimestamp).toLocaleDateString();
+			this.lastUpdate = `${day}, ${time}`;
 		},
 		calculateHealth(value) {
 			const lowerLimit = 0;
