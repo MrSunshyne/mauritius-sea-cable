@@ -12,7 +12,7 @@
 		<p>
 			There is a companion project which performs the tests and then pushes it to the gihtub repo of the tester.
 			<a
-				href="#"
+				href="https://github.com/reallyaditya"
 			>View Companion Project</a>
 		</p>
 
@@ -30,16 +30,18 @@
 			<li>Run it with cron</li>
 			<li>
 				Send a PR to add your repo as source to
-				<a href="#">this file</a>
+				<a
+					href="https://github.com/MrSunshyne/mauritius-sea-cable/blob/master/public/sources.json"
+				>this file</a>
 			</li>
 		</ul>
 		<h2>Is this Official?</h2>
 		<p>
 			Absolutely not. This is a community effort. All the code are open source and available online should you wish to verify the
 			<a
-				href="#"
+				href="https://github.com/MrSunshyne/mauritius-sea-cable"
 			>front-end client</a> or the
-			<a href="#">backend-end service</a>
+			<a href="https://github.com/reallyaditya">backend-end service</a>
 		</p>
 
 		<h2 id="contribute">Contribute</h2>
