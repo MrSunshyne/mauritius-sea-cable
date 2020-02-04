@@ -578,7 +578,6 @@ export default {
 								response.hasOwnProperty("SAFE")
 							) {
 								this.info = response;
-								this.processLastUpdated(response);
 								this.allCablesHealth();
 							} else {
 								this.error = "Missing key or something. check data source";
@@ -643,6 +642,9 @@ export default {
 			SAFE3.classList = this.calculateHealth(
 				this.info.SAFE3.download.bandwidth
 			);
+
+			// Update timestamp
+			this.processLastUpdated(this.info);
 		},
 		hoverCable(cableName, state) {
 			if (state) {
