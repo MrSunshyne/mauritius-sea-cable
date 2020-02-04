@@ -1,13 +1,12 @@
 [
   {
-    "name": "sample",
-    "url": "all-servers.json"
-  },
-  {
     "name": "MrSunshyne",
     "url": "https://raw.githubusercontent.com/MrSunshyne/mauritius-speedtest/master/data/realtime.json"
   },
-
+  {
+    "name": "sample",
+    "url": "all-servers.json"
+  },
   {
     "name": "reallyaditya",
     "url": "https://raw.githubusercontent.com/reallyaditya/speedtest-mauritius/master/data/realtime.json"
