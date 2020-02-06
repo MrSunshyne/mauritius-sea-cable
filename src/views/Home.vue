@@ -474,6 +474,7 @@
 					:to="{name: 'about', hash: '#contribute'}"
 					class="button hidden md:inline"
 				>Contribute on GitHub</router-link>
+				adapter : {{ adapter}}
 			</div>
 			<p></p>
 		</div>
@@ -488,11 +489,11 @@
 			>
 				<div class="cable-name">{{ name }}</div>
 				<div class="label" v-if="!hideUpload">Upload</div>
-				<div class="value upload" v-if="!hideUpload">{{ upload(value.upload.bandwidth) }}</div>
+				<div class="value upload" v-if="!hideUpload">{{ upload(value.upload) }}</div>
 				<div class="label">Download</div>
-				<div class="value download">{{ download(value.download.bandwidth) }}</div>
+				<div class="value download">{{ download(value.download) }}</div>
 				<div class="label">Ping ~</div>
-				<div class="value ping">{{ ping(value.ping.latency) }}</div>
+				<div class="value ping">{{ ping(value) }}</div>
 			</div>
 		</div>
 		<div class="last-updated">
@@ -513,10 +514,11 @@ export default {
 			health: "healthy",
 			error: null,
 			info: null,
-			hideUpload: true,
+			hideUpload: false,
 			source: null,
 			sources: null,
 			lastUpdate: null,
+			adapter: "cli", // api , cli
 			publicPath:
 				process.env.NODE_ENV === "production" ? "/mauritius-sea-cable/" : "/"
 		};
@@ -527,13 +529,29 @@ export default {
 			// console.log(hidden);
 		},
 		upload(value) {
-			return this.info ? this.round(this.toBits(value), 2) + " Mb/s" : "0 Mb/s";
+			if (this.adapter == "cli") {
+				return this.info
+					? this.round(this.toBits(value.bandwidth), 2) + " Mb/s"
+					: "0 Mb/s";
+			} else {
+				return this.round(value, 2) + " Mb/s";
+			}
 		},
 		download(value) {
-			return this.info ? this.round(this.toBits(value), 2) + " Mb/s" : "0 Mb/s";
+			if (this.adapter == "cli") {
+				return this.info
+					? this.round(this.toBits(value.bandwidth), 2) + " Mb/s"
+					: "0 Mb/s";
+			} else {
+				return this.round(value, 2) + " Mb/s";
+			}
 		},
 		ping(value) {
-			return this.info ? this.round(value, 1) + "ms" : "0ms";
+			if (this.adapter == "cli") {
+				return this.info ? this.round(value.ping.latency, 1) + "ms" : "0ms";
+			} else {
+				return this.round(value.latency, 2) + " ms";
+			}
 		},
 		toBits(value) {
 			return (value / (1024 * 1024)) * 8;
@@ -626,6 +644,13 @@ export default {
 		},
 		allCablesHealth() {
 			// TODO Should be rewritten to use cables from this.info instead of hardcoding
+
+			if (typeof this.info.LION.download == "object") {
+				this.adapter = "cli";
+			} else {
+				this.adapter = "api";
+			}
+
 			let MARS = document.getElementById("cable-MARS");
 			let LION = document.getElementById("cable-LION");
 			let SAFE1 = document.getElementById("cable-SAFE1");
