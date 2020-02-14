@@ -576,7 +576,10 @@ export default {
 		},
 		loadStatus() {
 			if (this.source) {
-				if (this.source.includes("https://")) {
+				if (
+					this.source.includes("https://") ||
+					this.source.includes("http://")
+				) {
 					// PUBLIC
 					fetch(`${this.source}`)
 						.then(json => json.json())
