@@ -1,5 +1,9 @@
 [
   {
+    "name": "lsldigital",
+    "url": "http://speedtest-mru.lsl.network/realtime.json"
+  },
+  {
     "name": "IshSookun",
     "url": "http://speedtest-mru.hacklog.in/realtime.json"
   },
