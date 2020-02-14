@@ -483,7 +483,7 @@
 				class="cable-wrapper"
 				v-if="info"
 				v-for="(value, name, index)  in info"
-				:class="calculateHealth(value.download.bandwidth)"
+				:class="calculateHealth(value.download)"
 				@mouseover="hoverCable(name,true)"
 				@mouseleave="hoverCable(name,false)"
 			>
@@ -624,11 +624,22 @@ export default {
 			const lowerLimit = 0;
 			const upperLimit = 20;
 
-			if (this.info) {
-				let valuePercentage = (
-					((this.toBits(value, 2) - lowerLimit) / upperLimit) *
+			// let bandwidth = this.adapter === "cli" ? value.bandwidth : value;
+			let valuePercentage;
+			// console.log(value);
+
+			if (this.adapter === "cli") {
+				valuePercentage = (
+					((this.toBits(value.bandwidth, 2) - lowerLimit) / upperLimit) *
 					100
 				).toFixed(1);
+			} else {
+				valuePercentage = ((parseInt(value) / upperLimit) * 100).toFixed(1);
+			}
+
+			// console.log(valuePercentage);
+
+			if (this.info) {
 				let health;
 				if (valuePercentage > 80) {
 					health = "healthy";
@@ -659,17 +670,11 @@ export default {
 			let SAFE1 = document.getElementById("cable-SAFE1");
 			let SAFE2 = document.getElementById("cable-SAFE2");
 			let SAFE3 = document.getElementById("cable-SAFE3");
-			MARS.classList = this.calculateHealth(this.info.MARS.download.bandwidth);
-			LION.classList = this.calculateHealth(this.info.LION.download.bandwidth);
-			SAFE1.classList = this.calculateHealth(
-				this.info.SAFE1.download.bandwidth
-			);
-			SAFE2.classList = this.calculateHealth(
-				this.info.SAFE2.download.bandwidth
-			);
-			SAFE3.classList = this.calculateHealth(
-				this.info.SAFE3.download.bandwidth
-			);
+			MARS.classList = this.calculateHealth(this.info.MARS.download);
+			LION.classList = this.calculateHealth(this.info.LION.download);
+			SAFE1.classList = this.calculateHealth(this.info.SAFE1.download);
+			SAFE2.classList = this.calculateHealth(this.info.SAFE2.download);
+			SAFE3.classList = this.calculateHealth(this.info.SAFE3.download);
 
 			// Update timestamp
 			this.processLastUpdated(this.info);
