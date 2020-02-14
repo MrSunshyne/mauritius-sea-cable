@@ -1,5 +1,9 @@
 [
   {
+    "name": "IshSookun",
+    "url": "http://speedtest-mru.hacklog.in/realtime.json"
+  },
+  {
     "name": "MrSunshyne",
     "url": "https://raw.githubusercontent.com/MrSunshyne/mauritius-speedtest/master/data/realtime.json"
   },
