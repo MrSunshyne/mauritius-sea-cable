@@ -1,15 +1,15 @@
 [
   {
+    "name": "MrSunshyne",
+    "url": "https://gist.githubusercontent.com/MrSunshyne/9d099be71fb988763a66eb972a6adc79/raw"
+  },
+  {
     "name": "lsldigital",
     "url": "https://speedtest-mru.lsl.network/realtime.json"
   },
   {
     "name": "IshSookun",
     "url": "https://speedtest-mru.hacklog.in/realtime.json"
-  },
-  {
-    "name": "MrSunshyne",
-    "url": "https://raw.githubusercontent.com/MrSunshyne/mauritius-speedtest/master/data/realtime.json"
   },
   {
     "name": "JulesMike",

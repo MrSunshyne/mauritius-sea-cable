@@ -447,24 +447,18 @@
 				</defs>
 			</svg>
 		</div>
-		<div class="relative text-sm px-3 text-center md:text-md md:text-left">
+		<div class="relative text-sm px-8 text-center md:text-md md:text-left">
 			<p v-if="error" class="px-3 bg-red-600">
 				An error occured
 				<br />
 				{{error}}
 			</p>
-			<h1 class="text-2xl md:text-5xl inline-block font-bold relative">
+			<h1 class="text-2xl md:text-5xl inline-block font-bold relative pt-8 leading-none">
 				Mauritius
 				<span class="font-light">Sea Cables</span>
 			</h1>
-			<p class="text-lg text-gray-400">Health Status of submarine cables connected to Mauritius.</p>
-			<div>
-				<span class="text-xs uppercase text-gray-400">Source :</span>
-				<select v-if="sources" v-model="source" class="bg-gray-500 px-2 text-black">
-					<option :value="item.url" v-for="item in sources">{{ item.name }}</option>
-				</select>
-			</div>
-			<div class="flex py-2">
+			<p class="text-sm text-gray-400 leading-tight">Health Status of submarine cables connected to Mauritius.</p>
+			<div class="flex pt-4">
 				<router-link :to="{name: 'about'}" class="button pr-2">Learn more</router-link>
 				<router-link
 					class="button pr-2 hidden md:inline"
@@ -474,15 +468,21 @@
 					:to="{name: 'about', hash: '#contribute'}"
 					class="button hidden md:inline"
 				>Contribute on GitHub</router-link>
-				adapter : {{ adapter}}
+				<!-- adapter : {{ adapter}} -->
+			</div>
+			<div class="text-md pt-4">
+				<span class="uppercase text-gray-400 pr-2">Choose datasource :</span>
+				<select v-if="sources" v-model="source" class="bg-gray-500 px-2 text-black cursor-pointer">
+					<option :value="item.url" v-for="item in sources">{{ item.name }}</option>
+				</select>
 			</div>
 			<p></p>
 		</div>
-		<div class="real-time">
+		<div class="real-time" v-if="info">
 			<div
 				class="cable-wrapper"
-				v-if="info"
 				v-for="(value, name, index)  in info"
+				:key="name+index"
 				:class="calculateHealth(value.download)"
 				@mouseover="hoverCable(name,true)"
 				@mouseleave="hoverCable(name,false)"
@@ -805,6 +805,7 @@ html {
 	}
 }
 
+
 .real-time {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -876,12 +877,20 @@ html {
 	}
 }
 
+@screen lg {
+	.real-time {
+		width: 40%;
+		flex-wrap:wrap;
+		justify-content:start;
+	}
+}
+
 @screen md {
 	.last-updated {
 		position: absolute;
 		right: 0;
 		top: 0;
-		@apply p-4 text-right text-gray-400;
+		@apply p-8 text-right text-gray-400;
 
 		.update-label {
 			@apply uppercase text-xs;
