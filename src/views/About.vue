@@ -10,12 +10,17 @@
 		<h2>How it works?</h2>
 		<p>The data comes from independently hosted tests that rely on the speedtest-cli utility.</p>
 		<p>
-			There is a companion project which performs the tests and then pushes it to the gihtub repo of the tester.
-			<a
-				href="https://github.com/reallyaditya/mauritius-speedtest"
-			>View Companion Project</a>
+			There are two companion projects which performs the tests for you, formats the data and provides a way to upload the results:
+			
 		</p>
-		<p>These respository are what we call `sources`.</p>
+			<ul>
+				<li><a href="https://github.com/JulesMike/mru-sea-cables-go">mru-sea-cables-go</a> by JulesMike</li>
+				<li><a
+				href="https://github.com/reallyaditya/mauritius-speedtest"
+			>mauritius-speedtest</a> by reallyaditya</li>
+			</ul>
+			
+		<br>
 
 		<p class="font-bold pt-3">Here is the list of sources currrently available:</p>
 		<ul v-if="sources">
@@ -25,17 +30,14 @@
 			</li>
 		</ul>
 		<h2 id="source">Would you like to be a source?</h2>
-		<p>// TODO insert instructions on how to become a source</p>
-		<ul>
-			<li>Clone repo</li>
-			<li>Run it with cron</li>
-			<li>
-				Send a PR to add your repo as source to
+		<p>See instructions to setup speedtest on your end in the README file <a href="https://github.com/JulesMike/mru-sea-cables-go">here</a></p>
+		<p>It's 3 simple steps !</p>
+
+		<p>When your data is ready, you can add yourself as source by sending a PR to
 				<a
 					href="https://github.com/MrSunshyne/mauritius-sea-cable/blob/master/public/sources.json"
-				>this file</a>
-			</li>
-		</ul>
+				>this file</a></p>
+		
 		<br />
 		<p>The file is expected to be in the following format</p>
 		<pre class="border border-black my-2 font-mono text-xs">			
@@ -64,7 +66,8 @@
 			<a
 				href="https://github.com/MrSunshyne/mauritius-sea-cable"
 			>front-end client</a> or the
-			<a href="https://github.com/reallyaditya/mauritius-speedtest">backend-end service</a>
+			<a href="https://github.com/reallyaditya/mauritius-speedtest">python backend-end program</a> or the 
+			<a href="https://github.com/JulesMike/mru-sea-cables-go">golang backend-end program</a>
 		</p>
 
 		<h2 id="contribute">Contribute</h2>
@@ -84,7 +87,13 @@
 			<a href="https://twitter.com/levelsio">@levelsio</a>
 		</p>
 		<p>
-			The companion project which provides the data sources was written in python by
+			The backend golang project which provides the data sources was written by
+			<a
+				href="https://github.com/JulesMike/mru-sea-cables-go"
+			>JulesMike</a>
+		</p>
+		<p>
+			The backend python project which provides the data sources was written  by
 			<a
 				href="https://github.com/reallyaditya"
 			>Adiyta</a>
