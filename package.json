@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs",
+    "deploy-netlify": "NODE_ENV=netlify vue-cli-service build --dest dist",
     "deploy-gh": "npm run build && git add -A && git commit -m 'generated using npm run deploy-gh' &&  git push -u origin master"
   },
   "dependencies": {
