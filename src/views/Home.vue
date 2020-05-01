@@ -453,6 +453,7 @@
 				<br />
 				{{error}}
 			</p>
+			 
 			<h1 class="text-2xl md:text-5xl inline-block font-bold relative pt-8 leading-none">
 				Mauritius
 				<span class="font-light">Sea Cables</span>
@@ -884,6 +885,20 @@ html {
 		justify-content:start;
 	}
 }
+
+
+@screen xl {
+	.real-time {
+		top:0;
+		bottom: auto;
+		left: 50%;
+		margin-left: -20%;
+		width: 40%;
+		flex-wrap:wrap;
+		justify-content:center; 
+	}
+}
+
 
 @screen md {
 	.last-updated {
