@@ -56,6 +56,10 @@
 								stroke-linejoin="round"
 							/>
 						</g>
+						<g id="cable-METISS">
+							<path 
+								id="Vector 1_2" d="M360 566C387.81 585.652 478.09 536.142 501.5 523.5C526.5 510 579.863 491.126 615.46 501.137" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+						</g>
 						<g id="WorldMap Clean">
 							<path
 								id="Vector"
@@ -671,11 +675,13 @@ export default {
 			let SAFE1 = document.getElementById("cable-SAFE1");
 			let SAFE2 = document.getElementById("cable-SAFE2");
 			let SAFE3 = document.getElementById("cable-SAFE3");
+			let METISS = document.getElementById("cable-METISS");
 			MARS.classList = this.calculateHealth(this.info.MARS.download);
 			LION.classList = this.calculateHealth(this.info.LION.download);
 			SAFE1.classList = this.calculateHealth(this.info.SAFE1.download);
 			SAFE2.classList = this.calculateHealth(this.info.SAFE2.download);
 			SAFE3.classList = this.calculateHealth(this.info.SAFE3.download);
+			METISS.classList = this.calculateHealth(this.info.METISS.download);
 
 			// Update timestamp
 			this.processLastUpdated(this.info);

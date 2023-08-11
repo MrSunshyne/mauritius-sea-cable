@@ -50,6 +50,9 @@
 						stroke-linejoin="round"
 					/>
 				</g>
+				<g id="cable-METISS">
+					<path id="Vector 1_2" d="M360 566C387.81 585.652 478.09 536.142 501.5 523.5C526.5 510 579.863 491.126 615.46 501.137" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+				</g>
 				<g id="cable-2">
 					<path
 						id="Vector 2"
