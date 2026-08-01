@@ -867,10 +867,6 @@ html {
 		@apply text-3xl;
 	}
 
-	.label {
-		@apply;
-	}
-
 	.value {
 		@apply text-3xl mb-5;
 	}
